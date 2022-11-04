@@ -28,5 +28,13 @@ $senha = $_REQUEST['senha'];
   $resultados = $comando->fetchAll(PDO::FETCH_ASSOC); //fetchAll retorn alguma coisa
   var_dump($resultados);
 
+  if(empty($resultados)){
+    exit("Login ou senha incorretos...");
+  }
+
+  session_start();
+  $_SESSION["usuario"] = $resultados[0];
+
+  header("Location: ../front/listagem.php")
 
 ?>
